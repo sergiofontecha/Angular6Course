@@ -1,1 +1,1 @@
-# Angular6Course
+# AngularCourse
