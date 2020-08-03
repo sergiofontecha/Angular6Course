@@ -1,1 +1,15 @@
-<h2>{{ nombre_componente }}</h2>
+<h2>{{ nombreComponente }}</h2>
+<div>
+  <ul *ngFor="let trabajador of fichaEmpleados; let i = index">
+    <li>
+      <strong>Empleado {{ i + 1 }}:</strong>
+    </li>
+    <ul
+      [ngClass]="{ green: trabajador.contratado, red: !trabajador.contratado }"
+    >
+      <li [ngStyle]="{ 'font-size': '20px' }">{{ trabajador.nombre }}</li>
+      <li>{{ trabajador.edad }}</li>
+      <li>{{ trabajador.cargo }}</li>
+    </ul>
+  </ul>
+</div>

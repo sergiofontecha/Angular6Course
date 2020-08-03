@@ -24,10 +24,10 @@ export class FrutaComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.textToShow = this.launchAlert(this.nombre, this.edad);
+    this.textToShow = this.createTextToShow(this.nombre, this.edad);
   }
 
-  launchAlert(nombre: string, edad: number): string {
+  createTextToShow(nombre: string, edad: number): string {
     let text = '';
 
     text = `Soy ${nombre} y tengo ${edad} años`;
