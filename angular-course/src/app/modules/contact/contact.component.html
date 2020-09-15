@@ -1,0 +1,7 @@
+<p>{{ title }}</p>
+
+<div *ngIf="parameter">
+  {{ parameter }}
+</div>
+
+<button *ngIf="!parameter" (click)="redirect()">Redirect</button>
