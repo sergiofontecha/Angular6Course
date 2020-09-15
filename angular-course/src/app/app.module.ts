@@ -4,11 +4,17 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+
 import { FrutaComponent } from 'src/app/modules/fruta/fruta.component';
 import { EmpleadosComponent } from 'src/app/modules/empleados/empleados.component';
 import { HomeComponent } from './modules/home/home.component';
 import { ContactComponent } from './modules/contact/contact.component';
 import { NavigatorComponent } from './shared/components/navigator/navigator.component';
+
+
+import { FrutaComponent } from 'src/app/components/fruta/fruta.component';
+import { EmpleadosComponent } from 'src/app/components/empleados/empleados.component';
+
 
 @NgModule({
   declarations: [
@@ -24,3 +30,17 @@ import { NavigatorComponent } from './shared/components/navigator/navigator.comp
   bootstrap: [AppComponent]
 })
 export class AppModule {}
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
