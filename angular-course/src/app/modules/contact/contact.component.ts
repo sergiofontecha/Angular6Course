@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-contact',
@@ -8,10 +9,19 @@ import { Component, OnInit } from '@angular/core';
 export class ContactComponent implements OnInit {
   // Component Variables
   public title: string;
+  public parameter: Params;
 
-  constructor() {
+  constructor(private _route: ActivatedRoute, private _router: Router) {
     this.title = 'Contact Page';
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this._route.params.forEach((params: Params) => {
+      this.parameter = params.page;
+    });
+  }
+
+  redirect() {
+    this._router.navigate(['/contact', 'helloooo!!']);
+  }
 }
