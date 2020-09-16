@@ -1,3 +1,4 @@
+// Angular modules
 import { Component, OnInit } from '@angular/core';
 
 // Services
@@ -9,15 +10,31 @@ import { RopaService } from '../../shared/services/ropa-service';
   styleUrls: ['./home.component.scss'],
   providers: [RopaService]
 })
-export class HomeComponent implements OnInit {
-  // Component variables
+export class HomeComponent {
+  // Variables declarations
   public title: string;
+  public collection: string[];
+  public showed: boolean;
+  public article: string;
 
   constructor(private _ropaService: RopaService) {
+    // Variables initialization
     this.title = 'Main Page';
+    this.showed = false;
   }
 
-  ngOnInit(): void {
-    console.log(this._ropaService.prueba('Camiseta Nike'));
+  // Service Methods
+  getCollection(): void {
+    this.collection = this._ropaService.getCollection();
+    this.showed = true;
+  }
+
+  addArticle() {
+    this._ropaService.setArticle(this.article);
+    this.article = '';
+  }
+
+  deleteArticle(itemID: number) {
+    this._ropaService.deleteCollection(itemID);
   }
 }
