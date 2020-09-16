@@ -21,6 +21,7 @@ export class HomeComponent {
     // Variables initialization
     this.title = 'Main Page';
     this.showed = false;
+    this.article = '';
   }
 
   // Service Methods
