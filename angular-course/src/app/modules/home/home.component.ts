@@ -20,7 +20,7 @@ export class HomeComponent {
 
   constructor(private _ropaService: RopaService) {
     // Variables initialization
-    this.title = 'Main Page';
+    this.title = 'Collection 2020';
     this.showed = false;
     this.article = '';
     this.date = new Date();
