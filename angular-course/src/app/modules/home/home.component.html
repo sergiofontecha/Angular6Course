@@ -1,0 +1,17 @@
+<h3>Collection 2020</h3>
+<button *ngIf="!showed" (click)="getCollection()">Get Collection</button>
+<input type="text" *ngIf="showed" [(ngModel)]="article" /><button
+  *ngIf="showed"
+  (click)="addArticle()"
+>
+  Add
+</button>
+<p *ngIf="article">
+  El artículo a añadir es: <strong>{{ article }}</strong>
+</p>
+<ul *ngIf="showed">
+  <li *ngFor="let item of collection; let i = index">
+    {{ item }} <button (click)="deleteArticle(i)">X</button>
+  </li>
+</ul>
+<button *ngIf="showed" (click)="showed = false">Hide list</button>
