@@ -10,6 +10,10 @@
 <p *ngIf="article">
   El artículo a añadir es: <strong>{{ article }}</strong>
 </p>
+<p *ngIf="articleAdded">
+  Se han añadido a la colección {{ articleQuantity | mathPipe: 2 }} *
+  <strong>{{ temporalArticle }}</strong>
+</p>
 <ul *ngIf="showed">
   <li *ngFor="let item of collection; let i = index">
     {{ item }} <button (click)="deleteArticle(i)">X</button>

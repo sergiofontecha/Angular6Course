@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class RopaService {
+  // Service Variables
   public nombrePrenda: string;
-  public collection: string[] = ['Pantalones Blancos', 'Camiseta Roja'];
+  public collection: string[] = ['Pantalón Blancos', 'Camiseta Roja'];
 
+  // Service Methods
   prueba(nombre: string): string {
     this.nombrePrenda = nombre;
     return this.nombrePrenda;
