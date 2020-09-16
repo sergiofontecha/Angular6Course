@@ -1,4 +1,5 @@
 <h3>Collection 2020</h3>
+<p>{{ date | date: "fullDate" }}</p>
 <button *ngIf="!showed" (click)="getCollection()">Get Collection</button>
 <input type="text" *ngIf="showed" [(ngModel)]="article" /><button
   *ngIf="showed"

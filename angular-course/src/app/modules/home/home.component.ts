@@ -16,12 +16,14 @@ export class HomeComponent {
   public collection: string[];
   public showed: boolean;
   public article: string;
+  public date: Date;
 
   constructor(private _ropaService: RopaService) {
     // Variables initialization
     this.title = 'Main Page';
     this.showed = false;
     this.article = '';
+    this.date = new Date();
   }
 
   // Service Methods
