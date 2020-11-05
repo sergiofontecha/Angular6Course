@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { User } from './user.model';
+// import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-contact',
@@ -9,19 +10,34 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 export class ContactComponent implements OnInit {
   // Component Variables
   public title: string;
-  public parameter: Params;
+  public user: User;
 
-  constructor(private _route: ActivatedRoute, private _router: Router) {
-    this.title = 'Contact Page';
+  // Todo el código comentado es un ejemplo de rutas que aceptan parámetros, como recogerlos y usarlos
+
+  // public parameter: Params;
+
+  // constructor(private _route: ActivatedRoute, private _router: Router) {
+  //   this.title = 'Contact Page';
+  // }
+
+  // ngOnInit(): void {
+  //   this._route.params.forEach((params: Params) => {
+  //     this.parameter = params.page;
+  //   });
+  // }
+
+  // redirect() {
+  //   this._router.navigate(['/contact', 'helloooo!!']);
+  // }
+
+  constructor() {
+    this.title = 'User Contact';
+    this.user = new User('', '', '');
   }
 
-  ngOnInit(): void {
-    this._route.params.forEach((params: Params) => {
-      this.parameter = params.page;
-    });
-  }
+  ngOnInit() {}
 
-  redirect() {
-    this._router.navigate(['/contact', 'helloooo!!']);
+  onSubmit() {
+    console.log(this.user);
   }
 }
