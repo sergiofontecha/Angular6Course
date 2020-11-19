@@ -1,42 +1,81 @@
-<h1>{{ title }}</h1>
-<hr />
+<h2>{{ title }}</h2>
 
 <!-- <div *ngIf="parameter">
   {{ parameter }}
 </div>
 
 <button *ngIf="!parameter" (click)="redirect()">Redirect</button> -->
-
-<form class="contactForm" #constactForm="ngForm" (ngSubmit)="onSubmit()">
+<form
+  class="contactForm"
+  [formGroup]="contactForm"
+  (ngSubmit)="onSubmit(contactForm.value)"
+>
   <div class="contactForm__field">
     <label for="name">Name: </label>
-    <input
-      type="text"
-      name="name"
-      #name="ngModel"
-      [(ngModel)]="user.name"
-      required
-    />
+    <input id="name" type="text" formControlName="name" />
+    <span
+      *ngIf="
+        contactForm.get('name').hasError('required') &&
+        contactForm.get('name').touched
+      "
+      >Es necesario introducir un nombre
+    </span>
   </div>
   <div class="contactForm__field">
     <label for="surname">Surname: </label>
-    <input
-      type="text"
-      name="surname"
-      #surname="ngModel"
-      [(ngModel)]="user.surname"
-      required
-    />
+    <input id="surname" type="text" formControlName="surname" />
   </div>
+  <span
+    *ngIf="
+      contactForm.get('surname').hasError('required') &&
+      contactForm.get('surname').touched
+    "
+    >Es necesario introducir un apellido
+  </span>
   <div class="contactForm__field">
     <label for="age">Age: </label>
-    <input
-      type="number"
-      name="age"
-      #name="ngModel"
-      [(ngModel)]="user.age"
-      required
-    />
+    <input id="age" type="number" formControlName="age" />
   </div>
-  <input type="submit" value="Enviar" />
+  <span
+    *ngIf="
+      contactForm.get('age').hasError('required') &&
+      contactForm.get('age').touched
+    "
+    >Es necesario introducir una edad
+  </span>
+  <div class="contactForm__field">
+    <label for="email">Email: </label>
+    <input id="email" type="email" formControlName="email" />
+  </div>
+  <span
+    *ngIf="
+      contactForm.get('email').hasError('email') &&
+      contactForm.get('email').touched
+    "
+    >Es necesario introducir un email válido
+  </span>
+  <div class="contactForm__field">
+    <label for="password">Password: </label>
+    <input id="password" type="password" formControlName="password" />
+  </div>
+  <span
+    *ngIf="
+      contactForm.get('password').hasError('required') &&
+      contactForm.get('password').touched
+    "
+    >Es necesario introducir una clave de acceso
+  </span>
+  <input
+    type="submit"
+    value="Enviar"
+    class="submitButton"
+    [disabled]="contactForm.invalid"
+  />
 </form>
+<h2>Users List</h2>
+<p *ngIf="users.length === 0">The list is currently empty</p>
+<ul>
+  <li *ngFor="let item of users">
+    {{ item.name }} {{ item.surname }} {{ item.age }}
+  </li>
+</ul>

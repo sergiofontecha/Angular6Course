@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
 import { User } from './user.model';
 // import { Router, ActivatedRoute, Params } from '@angular/router';
 
@@ -9,8 +11,9 @@ import { User } from './user.model';
 })
 export class ContactComponent implements OnInit {
   // Component Variables
+  public contactForm: FormGroup;
   public title: string;
-  public user: User;
+  public users: Array<User>;
 
   // Todo el código comentado es un ejemplo de rutas que aceptan parámetros, como recogerlos y usarlos
 
@@ -30,14 +33,29 @@ export class ContactComponent implements OnInit {
   //   this._router.navigate(['/contact', 'helloooo!!']);
   // }
 
-  constructor() {
+  constructor(private _fb: FormBuilder) {
     this.title = 'User Contact';
-    this.user = new User('', '', '');
+    this.users = [];
+    this.contactForm = this._fb.group({
+      name: ['', Validators.required],
+      surname: ['', Validators.required],
+      email: ['', Validators.compose([Validators.required, Validators.email])],
+      age: ['', Validators.required],
+      password: ['', Validators.required]
+    });
   }
 
   ngOnInit() {}
 
-  onSubmit() {
-    console.log(this.user);
+  onSubmit(formValues) {
+    const user: User = {
+      name: formValues.name,
+      surname: formValues.surname,
+      age: formValues.age,
+      email: formValues.email,
+      password: formValues.password
+    };
+    this.users.push(user);
+    this.contactForm.reset();
   }
 }

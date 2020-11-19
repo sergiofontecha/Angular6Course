@@ -1,0 +1,16 @@
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 250px;
+  width: 250px;
+  .contactForm__field {
+    width: 100%;
+    input {
+      display: block;
+    }
+  }
+  .submitButton {
+    width: 30%;
+  }
+}
