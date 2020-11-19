@@ -1,6 +1,7 @@
-<h3>Collection 2020</h3>
+<h3>{{ title | uppercase }}</h3>
+<p>{{ date | date: 'fullDate' }}</p>
 <button *ngIf="!showed" (click)="getCollection()">Get Collection</button>
-<input type="text" *ngIf="showed" [(ngModel)]="article" /><button
+<input type="text" *ngIf="showed" /><button
   *ngIf="showed"
   (click)="addArticle()"
 >
@@ -8,6 +9,10 @@
 </button>
 <p *ngIf="article">
   El artículo a añadir es: <strong>{{ article }}</strong>
+</p>
+<p *ngIf="articleAdded">
+  Se han añadido a la colección {{ articleQuantity | mathPipe: 2 }} *
+  <strong>{{ temporalArticle }}</strong>
 </p>
 <ul *ngIf="showed">
   <li *ngFor="let item of collection; let i = index">

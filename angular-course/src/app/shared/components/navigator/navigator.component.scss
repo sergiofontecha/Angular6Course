@@ -1,6 +1,18 @@
+.navigator-container {
+  margin: 0 auto;
+  display: table;
+}
+
+.navigator-option {
+  float: left;
+  display: block;
+  margin: 4px;
+}
+
 .navigator-link {
   color: black;
   text-decoration-line: none;
+  font-size: 1.5em;
 }
 
 .linkActive {

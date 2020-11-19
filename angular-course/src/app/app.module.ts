@@ -1,15 +1,19 @@
-import { BrowserModule } from '@angular/platform-browser';
+// Angular Modules
 import { NgModule } from '@angular/core';
-
+import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
+// App Components
+import { AppComponent } from './app.component';
 import { FrutaComponent } from 'src/app/modules/fruta/fruta.component';
 import { EmpleadosComponent } from 'src/app/modules/empleados/empleados.component';
 import { HomeComponent } from './modules/home/home.component';
 import { ContactComponent } from './modules/contact/contact.component';
 import { NavigatorComponent } from './shared/components/navigator/navigator.component';
+
+// App Services, Pipelines, Intefaces And More
+import { MathPipe } from './shared/pipes/mathPipe';
 
 @NgModule({
   declarations: [
@@ -18,9 +22,10 @@ import { NavigatorComponent } from './shared/components/navigator/navigator.comp
     EmpleadosComponent,
     HomeComponent,
     ContactComponent,
-    NavigatorComponent
+    NavigatorComponent,
+    MathPipe
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent]
 })

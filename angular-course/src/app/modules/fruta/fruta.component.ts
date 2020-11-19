@@ -19,8 +19,6 @@ export class FrutaComponent implements OnInit {
     this.nombre = 'Sergio';
     this.edad = 38;
     this.textToShow = '';
-
-    console.log(this.nombreComponente, this.listadoFrutas[0]);
   }
 
   ngOnInit() {
