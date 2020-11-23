@@ -1,8 +1,11 @@
+// Angular Modules
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
-import { User } from './user.model';
 // import { Router, ActivatedRoute, Params } from '@angular/router';
+
+// App Services, Pipelines, models And More
+import { DataService } from '../../shared/services/data_service/data.service';
+import { User } from './user.model';
 
 @Component({
   selector: 'app-contact',
@@ -14,6 +17,7 @@ export class ContactComponent implements OnInit {
   public contactForm: FormGroup;
   public title: string;
   public users: Array<User>;
+  public data: Array<any>;
 
   // Todo el código comentado es un ejemplo de rutas que aceptan parámetros, como recogerlos y usarlos
 
@@ -33,10 +37,10 @@ export class ContactComponent implements OnInit {
   //   this._router.navigate(['/contact', 'helloooo!!']);
   // }
 
-  constructor(private _fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private dataService: DataService) {
     this.title = 'User Contact';
     this.users = [];
-    this.contactForm = this._fb.group({
+    this.contactForm = this.fb.group({
       name: ['', Validators.required],
       surname: ['', Validators.required],
       email: ['', Validators.compose([Validators.required, Validators.email])],
@@ -45,7 +49,12 @@ export class ContactComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.dataService.getUsers().subscribe((data: any[]) => {
+      this.data = data;
+      console.log('DATAAAAAAAA', this.data);
+    });
+  }
 
   onSubmit(formValues) {
     const user: User = {
